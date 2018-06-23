@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+
+
+    <style>
+        ul > li{margin-right:25px;font-weight:lighter;cursor:pointer}
+        li.active{border-bottom:3px solid silver;}
+
+        .item-photo{display:flex;justify-content:center;align-items:center;border-right:1px solid #f6f6f6;}
+        .menu-items{list-style-type:none;font-size:11px;display:inline-flex;margin-bottom:0;margin-top:20px}
+        .btn-success{width:100%;border-radius:0;}
+        .section{width:100%;margin-left:-15px;padding:2px;padding-left:15px;padding-right:15px;background:#f8f9f9}
+        .title-price{margin-top:30px;margin-bottom:0;color:black}
+        .title-attr{margin-top:0;margin-bottom:0;color:black;}
+        .btn-minus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-right:0;}
+        .btn-plus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-left:0;}
+        div.section > div {width:100%;display:inline-flex;}
+        div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
+        .attr,.attr2{cursor:pointer;margin-right:5px;height:20px;font-size:10px;padding:2px;border:1px solid gray;border-radius:2px;}
+        .attr.active,.attr2.active{ border:1px solid orange;}
+
+        @media (max-width: 426px) {
+            .container {margin-top:0px !important;}
+            .container > .row{padding:0 !important;}
+            .container > .row > .col-xs-12.col-sm-5{
+                padding-right:0 ;
+            }
+            .container > .row > .col-xs-12.col-sm-9 > div > p{
+                padding-left:0 !important;
+                padding-right:0 !important;
+            }
+            .container > .row > .col-xs-12.col-sm-9 > div > ul{
+                padding-left:10px !important;
+
+            }
+            .section{width:104%;}
+            .menu-items{padding-left:0;}
+        }
+
+        .carousel {
+            margin-bottom: 0;
+            padding: 0 40px 30px 40px;
+        }
+        /* The controlsy */
+        .carousel-control {
+            left: -12px;
+            height: 40px;
+            width: 40px;
+            background: none repeat scroll 0 0 #222222;
+            border: 4px solid #FFFFFF;
+            border-radius: 23px 23px 23px 23px;
+            margin-top: 90px;
+        }
+        .carousel-control.right {
+            right: -12px;
+        }
+        /* The indicators */
+        .carousel-indicators {
+            right: 50%;
+            top: auto;
+            bottom: -10px;
+            margin-right: -19px;
+        }
+        /* The colour of the indicators */
+        .carousel-indicators li {
+            background: #cecece;
+        }
+        .carousel-indicators .active {
+            background: #428bca;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<h1>NAV HERE</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 item-photo">
+            <img style="max-width:100%; height: 400px;" src="candybar.jpg" />
+        </div>
+        <div class="col-xs-5" style="border:0px solid gray">
+            <!-- Datos del vendedor y titulo del producto -->
+            <h3>candy bar</h3>
+            <h5 style="color:#337ab7">Specialty <a href="#">Chocolate</a>  <small style="color:#337ab7">(id: cabar123)</small></h5>
+
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="cmd" value="_s-xclick">
+                <input type="hidden" name="hosted_button_id" value="L3PPTED2B7C4N">
+
+                <table>
+                    <tr><td><input type="hidden" name="on0" value="Size">Size</td></tr><tr><td><select name="os0">
+                    <option value="1.5oz">1.5oz $2.99 USD</option>
+
+
+                    <option value="7.0 oz">7.0 oz $8.95 USD</option>
+
+                    <br>
+                    <br>
+                </select> </td></tr>
+                    <tr><td><input type="hidden" name="on1" value="Chocolate Type:">Chocolate Type:</td></tr><tr><td><select name="os1">
+                    <option value="Milk Chocolate">Milk Chocolate </option>
+                    <option value="Dark Chocolate">Dark Chocolate </option>
+                    <option value="White Chocolate">White Chocolate </option>
+                </select> </td></tr>
+                </table>
+                <input type="hidden" name="currency_code" value="USD">
+                <br>
+                <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+                <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+            </form>
+
+
+
+            <ul style="list-style:none; padding-top:15px;">
+                <li>Description</li>
+
+            </ul>
+            <div style="width:100%;border-top:1px solid silver">
+                <p style="padding:15px;">
+                    What better way to say Happy Fathers Day than with this delicious Angell and Phelps Chocolate Greeting card!? Decorated with our signature white chocolate your Dad is sure to enjoy this delectable token of your gratitude this Fathers Day.
+                    </small>
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+<small>
+    <ul style="list-style:none; padding-top:15px; padding-left:100px;">
+        <li>Similar products: </li>
+
+    </ul>
+</small>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="Carousel" class="carousel slide" data-ride="carousel">
+
+
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                        </div><!--.row-->
+                    </div><!--.item-->
+
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                        </div><!--.row-->
+                    </div><!--.item-->
+
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                        </div><!--.row-->
+                    </div><!--.item-->
+
+
+                </div>
+            </div>
+        </div><!--.container-->
+
+
+
+
+
+
+        <script>
+            $(document).ready(function(){
+                //-- Click on detail
+                $("ul.menu-items > li").on("click",function(){
+                    $("ul.menu-items > li").removeClass("active");
+                    $(this).addClass("active");
+                })
+
+                $(".attr,.attr2").on("click",function(){
+                    var clase = $(this).attr("class");
+
+                    $("." + clase).removeClass("active");
+                    $(this).addClass("active");
+                })
+
+                //-- Click on QUANTITY
+                $(".btn-minus").on("click",function(){
+                    var now = $(".section > div > input").val();
+                    if ($.isNumeric(now)){
+                        if (parseInt(now) -1 > 0){ now--;}
+                        $(".section > div > input").val(now);
+                    }else{
+                        $(".section > div > input").val("1");
+                    }
+                })
+                $(".btn-plus").on("click",function(){
+                    var now = $(".section > div > input").val();
+                    if ($.isNumeric(now)){
+                        $(".section > div > input").val(parseInt(now)+1);
+                    }else{
+                        $(".section > div > input").val("1");
+                    }
+                })
+            })
+
+
+        </script>
+
+
+
+</body>
+</html>

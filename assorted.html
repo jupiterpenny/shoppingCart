@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <!------ Include the above in your HEAD tag ---------->
+
+    <style>
+        ul > li{margin-right:25px;font-weight:lighter;cursor:pointer}
+        li.active{border-bottom:3px solid silver;}
+
+        .item-photo{display:flex;justify-content:center;align-items:center;border-right:1px solid #f6f6f6;}
+        .menu-items{list-style-type:none;font-size:11px;display:inline-flex;margin-bottom:0;margin-top:20px}
+        .btn-success{width:100%;border-radius:0;}
+        .section{width:100%;margin-left:-15px;padding:2px;padding-left:15px;padding-right:15px;background:#f8f9f9}
+        .title-price{margin-top:30px;margin-bottom:0;color:black}
+        .title-attr{margin-top:0;margin-bottom:0;color:black;}
+        .btn-minus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-right:0;}
+        .btn-plus{cursor:pointer;font-size:7px;display:flex;align-items:center;padding:5px;padding-left:10px;padding-right:10px;border:1px solid gray;border-radius:2px;border-left:0;}
+        div.section > div {width:100%;display:inline-flex;}
+        div.section > div > input {margin:0;padding-left:5px;font-size:10px;padding-right:5px;max-width:18%;text-align:center;}
+        .attr,.attr2{cursor:pointer;margin-right:5px;height:20px;font-size:10px;padding:2px;border:1px solid gray;border-radius:2px;}
+        .attr.active,.attr2.active{ border:1px solid orange;}
+
+        @media (max-width: 426px) {
+            .container {margin-top:0px !important;}
+            .container > .row{padding:0 !important;}
+            .container > .row > .col-xs-12.col-sm-5{
+                padding-right:0 ;
+            }
+            .container > .row > .col-xs-12.col-sm-9 > div > p{
+                padding-left:0 !important;
+                padding-right:0 !important;
+            }
+            .container > .row > .col-xs-12.col-sm-9 > div > ul{
+                padding-left:10px !important;
+
+            }
+            .section{width:104%;}
+            .menu-items{padding-left:0;}
+        }
+
+        .carousel {
+            margin-bottom: 0;
+            padding: 0 40px 30px 40px;
+        }
+        /* The controlsy */
+        .carousel-control {
+            left: -12px;
+            height: 40px;
+            width: 40px;
+            background: none repeat scroll 0 0 #222222;
+            border: 4px solid #FFFFFF;
+            border-radius: 23px 23px 23px 23px;
+            margin-top: 90px;
+        }
+        .carousel-control.right {
+            right: -12px;
+        }
+        /* The indicators */
+        .carousel-indicators {
+            right: 50%;
+            top: auto;
+            bottom: -10px;
+            margin-right: -19px;
+        }
+        /* The colour of the indicators */
+        .carousel-indicators li {
+            background: #cecece;
+        }
+        .carousel-indicators .active {
+            background: #428bca;
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+<h1>NAV HERE</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-4 item-photo">
+            <img style="max-width:100%; height: auto;" src="assorted.jpg" />
+        </div>
+        <div class="col-xs-5" style="border:0px solid gray">
+            <!-- Datos del vendedor y titulo del producto -->
+            <h3>assorted Chocolates</h3>
+            <h5 style="color:#337ab7">Specialty <a href="#">Chocolate</a>  <small style="color:#337ab7">(id: asor1)</small></h5>
+
+
+            <h3>Chocolate Variations (Choose up to six, you can remove variations from the list by clicking on the variation you would like to remove)</h3>
+
+
+            <ul>
+                <!--<li id="li1"></li>-->
+                <!--<li id="li2"></li>-->
+                <!--<li id="li3"></li>-->
+                <!--<li id="li4"></li>-->
+                <!--<li id="li5"></li>-->
+                <!--<li id="li6"></li>-->
+
+
+
+                <!--<li onclick="this.parentNode.removeChild(this);">-->
+                    <!--<input type="hidden" name="ingredients[]" value="Cheese" />-->
+                    <!--Cheese-->
+                <!--</li>-->
+                <!--<li onclick="this.parentNode.removeChild(this);">-->
+                    <!--<input type="hidden" name="ingredients[]" value="Ham" />-->
+                    <!--Ham-->
+                <!--</li>-->
+                <!--<li onclick="this.parentNode.removeChild(this);">-->
+                    <!--<input type="hidden" name="ingredients[]" value="Mushrooms" />-->
+                    <!--Mushrooms-->
+                <!--</li>-->
+            </ul>
+
+            <select onchange="selectIngredient(this);">
+                <option value="Carmel Square Milk Chocolate">Carmel Square Milk Chocolate</option>
+                <option value="Carmel Square Dark Chocolate">Carmel Square Dark Chocolate</option>
+                <option value="Sea Salt Carmel Square Milk Chocolate">Sea Salt Carmel Square Milk Chocolate</option>
+                <option value="Sea Salt Carmel Square Dark Chocolate">Sea Salt Carmel Square Dark Chocolate</option>
+                <option value="Peanut Cluster Milk Chocolate">Peanut Cluster Milk Chocolate</option>
+                <option value="Peanut Cluster Dark Chocolate">Peanut Cluster Dark Chocolate</option>
+                <option value="Covered Pecan Milk Chocolate">Covered Pecan Milk Chocolate</option>
+                <option value="Covered Pecan Dark Chocolate">Covered Pecan Dark Chocolate</option>
+                <option value="Almond Cluster Milk Chocolate">Almond Cluster Milk Chocolate</option>
+                <option value="Almond Cluster Dark Chocolate">Almond Cluster Dark Chocolate</option>
+                <option value="Cashew Cluster Milk Chocolate">Cashew Cluster Milk Chocolate</option>
+                <option value="Cashew Cluster Dark Chocolate">Cashew Cluster Dark Chocolate</option>
+                <option value="Pecan Honeybee (Turtle) Milk Chocolate">Pecan Honeybee (Turtle) Milk Chocolate</option>
+                <option value="Pecan Honeybee (Turtle) Dark Chocolate">Pecan Honeybee (Turtle) Dark Chocolate</option>
+                <option value="Cashew Honeybee (Turtle) Milk Chocolate">Cashew Honeybee (Turtle) Milk Chocolate</option>
+                <option value="Cashew Honeybee (Turtle) Dark Chocolate">Cashew Honeybee (Turtle) Dark Chocolate</option>
+                <option value="Macadamia Honeybee (Turtle) Milk Chocolate">Macadamia Honeybee (Turtle) Milk Chocolate</option>
+                <option value="Macadamia Honeybee (Turtle) Dark Chocolate">Macadamia Honeybee (Turtle) Dark Chocolate</option>
+                <option value="Rocco (Hard English Toffee) Milk Chocolate">Rocco (Hard English Toffee) Milk Chocolate</option>
+                <option value="Rocco (Hard English Toffee) Dark Chocolate">Rocco (Hard English Toffee) Dark Chocolate</option>
+                <option value="Peanut Butter Square Milk Chocolate">Peanut Butter Square Milk Chocolate</option>
+                <option value="Peanut Butter Square Dark Chocolate">Peanut Butter Square Dark Chocolate</option>
+                <option value="Coconut Creme Milk Chocolate">Coconut Creme Milk Chocolate</option>
+                <option value="Coconut Creme Dark Chocolate">Coconut Creme Dark Chocolate</option>
+                <option value="Chocolate Creme Milk Chocolate">Chocolate Creme Milk Chocolate</option>
+                <option value="Chocolate Creme Dark Chocolate">Chocolate Creme Dark Chocolate</option>
+                <option value="French Opera (Butter Creme) Milk Chocolate">French Opera (Butter Creme) Milk Chocolate</option>
+                <option value="French Opera (Butter Creme) Dark Chocolate">French Opera (Butter Creme) Dark Chocolate</option>
+                <option value="Maple Creme Milk Chocolate">Maple Creme Milk Chocolate</option>
+                <option value="Maple Creme Milk Chocolate">Maple Creme Dark Chocolate</option>
+                <option value="Orange Creme Milk Chocolate">Orange Creme Milk Chocolate</option>
+                <option value="Orange Creme Dark Chocolate">Orange Creme Dark Chocolate</option>
+                <option value="Raspberry Creme Milk Chocolate">Raspberry Creme Milk Chocolate</option>
+                <option value="Raspberry Creme Dark Chocolate">Raspberry Creme Dark Chocolate</option>
+                <option value="Vanilla Creme (Milk Chocolate only)">Vanilla Creme (Milk Chocolate only)</option>
+                <option value="Cherry Cordial Milk Chocolate">Cherry Cordial Milk Chocolate</option>
+                <option value="Cherry Cordial Dark Chocolate">Cherry Cordial Dark Chocolate</option>
+                <option value="Marshmallow Milk Chocolate">Marshmallow Milk Chocolate</option>
+                <option value="Marshmallow Dark Chocolate">Marshmallow Dark Chocolate</option>
+                <option value="Plain Truffle Milk Chocolate">Plain Truffle Milk Chocolate</option>
+                <option value="Plain Truffle Dark Chocolate">Plain Truffle Dark Chocolate</option>
+                <option value="Rum Truffle (Milk Chocolate only)">Rum Truffle (Milk Chocolate only)</option>
+                <option value="Amaretto Truffle (Milk Chocolate only)">Amaretto Truffle (Milk Chocolate only)</option>
+                <option value="Raspberry Truffle (Dark Truffle) Milk Chocolate">Raspberry Truffle (Dark Truffle) Milk Chocolate</option>
+                <option value="Raspberry Truffle (Dark Truffle) Dark Chocolate">Raspberry Truffle (Dark Truffle) Dark Chocolate</option>
+                <option value="Champagne Truffle (Dark Chocolate Only)">Champagne Truffle (Dark Chocolate Only)</option>
+                <option value="Candied Ginger (Dark Chocolate Only)">Candied Ginger (Dark Chocolate Only)</option>
+                <option value="Candied Orange Peels (Dark Chocolate Only)">Candied Orange Peels (Dark Chocolate Only)</option>
+                <option value="White Chocolate Pecan Honeybee">White Chocolate Pecan Honeybee</option>
+
+            </select>
+
+
+
+
+
+
+
+                <table>
+                    <tr><td><select  id="pounds">
+                    <option value="10.95">1/2 LB $10.98 USD</option>
+                    <option value="21.98">1 LB $21.98 USD</option>
+                    <option value="35.98">2 LB $35.98 USD</option>
+                    <option value="50.98">5 LB $50.98 USD</option>
+                </select> </td></tr>
+
+
+
+
+
+                    <!--<tr><td><input type="hidden" name="on1" value="Chocolate Types"></td></tr><tr><td><input style="display:none;" type="text" name="os1" id="os1" maxlength="1000"></td></tr>-->
+                </table>
+
+
+            <label for="states">shipping destination state </label>
+            <select id="states">
+                <option value="2">Alabama</option>
+                <option value="2">Alaska</option>
+                <option value="2">Arizona</option>
+                <option value="2">Arkansas</option>
+                <option value="2">California</option>
+                <option value="2">Colorado</option>
+                <option value="2">Connecticut</option>
+                <option value="2">Delaware</option>
+                <option value="2">District Of Columbia</option>
+                <option value=1>Florida</option>
+                <option value="2">Georgia</option>
+                <option value="2">Hawaii</option>
+                <option value="2">Idaho</option>
+                <option value="2">Illinois</option>
+                <option value="2">Indiana</option>
+                <option value="2">Iowa</option>
+                <option value="2">Kansas</option>
+                <option value="2">Kentucky</option>
+                <option value="2">Louisiana</option>
+                <option value="2">Maine</option>
+                <option value="2">Maryland</option>
+                <option value="2">Massachusetts</option>
+                <option value="2">Michigan</option>
+                <option value="2">Minnesota</option>
+                <option value="2">Mississippi</option>
+                <option value="2">Missouri</option>
+                <option value="2">Montana</option>
+                <option value="2">Nebraska</option>
+                <option value="2">Nevada</option>
+                <option value="2">New Hampshire</option>
+                <option value="2">New Jersey</option>
+                <option value="2">New Mexico</option>
+                <option value="2">New York</option>
+                <option value="2">North Carolina</option>
+                <option value="2">North Dakota</option>
+                <option value="2">Ohio</option>
+                <option value="2">Oklahoma</option>
+                <option value="2">Oregon</option>
+                <option value="2">Pennsylvania</option>
+                <option value="2">Rhode Island</option>
+                <option value="2">South Carolina</option>
+                <option value="2">South Dakota</option>
+                <option value="2">Tennessee</option>
+                <option value="2">Texas</option>
+                <option value="2">Utah</option>
+                <option value="2">Vermont</option>
+                <option value="2">Virginia</option>
+                <option value="2">Washington</option>
+                <option value="2">West Virginia</option>
+                <option value="2">Wisconsin</option>
+                <option value="2">Wyoming</option>
+                <option value="3">Overseas</option>
+            </select>
+
+
+            <label for="shippingType">shipping type </label>
+            <select id="shippingType">
+                <option value="1">Standard</option>
+                <option value="2">Business</option>
+                <option value="3">Express</option>
+            </select>
+
+            <a id="calculatePrice" onClick="calculatePrice();">calculate Price</a>
+
+            <h3 id="price"> </h3>
+
+                <a id="savedBut" style="border: 1px solid black; display:none;" onClick="handle();">Confirm Selection and Price</a>
+                <a id="saved" style="display:none;">&#10004; Saved</a>
+                <button id="reset" style="display:none; border: 1px solid black" onClick="location.reload();"> Reset Selection</button>
+
+                <br>
+                <br>
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+
+                <!-- Identify your business so that you can collect the payments. -->
+                <input type="hidden" name="business" value="akrummel@askdesigns.biz">
+
+                <!-- Specify a PayPal Shopping Cart Add to Cart button. -->
+                <input type="hidden" name="cmd" value="_cart">
+                <input type="hidden" name="add" value="1">
+
+                <!-- Specify details about the item that buyers will purchase. -->
+                <!-- Specify details about the item that buyers will purchase. -->
+                <input id="os1" type="hidden" name="item_name" value="">
+                <input id="os3" type="hidden" name="amount" value="">
+                <input type="hidden" name="on0"value="Description">
+                <label for="os0"></label>
+                <input style="display:none;" type="text" name="os0" id="os0" maxlength="6000">
+                <input type="hidden" name="currency_code" value="USD">
+
+
+
+
+
+                <!-- Display the payment button. -->
+                <input type="image" name="submit"
+                       src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif"
+                       alt="Add to Cart">
+                <img alt="" width="1" height="1"
+                     src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" >
+            </form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <ul style="list-style:none; padding-top:15px;">
+                <li>Description</li>
+
+            </ul>
+            <div style="width:100%;border-top:1px solid silver">
+                <p style="padding:15px;">
+                    Choose up to 6 different pieces of candy and build your own custom box of chocolates. We have a wide variety of flavors and combinations to choose from and you can choose either dark or milk chocolate coating. Pick all of your favorites and reward your taste buds today.
+
+
+                    (Each box will contain more than 6 pieces of candy. We will use your choices to fill the box. If you would like a specific number of a certain kind of candy, more than six different kinds or have any other special instructions please use the "special instructions" field or feel free to call us at (800) 969-2634 ) </small>
+                </p>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<small>
+    <ul style="list-style:none; padding-top:15px; padding-left:100px;">
+        <li>Similar products: </li>
+
+    </ul>
+</small>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="Carousel" class="carousel slide" data-ride="carousel">
+
+
+                <!-- Carousel items -->
+                <div class="carousel-inner">
+
+                    <div class="item active">
+                        <div class="row">
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                        </div><!--.row-->
+                    </div><!--.item-->
+
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                        </div><!--.row-->
+                    </div><!--.item-->
+
+                    <div class="item">
+                        <div class="row">
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                            <div class="col-md-3"><a href="#" class="thumbnail"><img src="http://placehold.it/250x250" alt="Image" style="max-width:100%;"></a></div>
+                        </div><!--.row-->
+                    </div><!--.item-->
+
+
+                </div>
+            </div>
+        </div><!--.container-->
+
+
+
+
+
+
+        <script>
+var count = 0;
+var val = "";
+
+
+            function selectIngredient(select)
+            {
+
+                var option = select.options[select.selectedIndex];
+                var ul = select.parentNode.getElementsByTagName('ul')[0];
+
+                var choices = ul.getElementsByTagName('input');
+
+                for (var i = 0; i < choices.length; i++)
+
+                    if (choices[i].value == option.value)
+                        return;
+                count++;
+
+
+
+                var li = document.createElement('li');
+                var input = document.createElement('input');
+                var text = document.createTextNode(option.firstChild.data);
+
+                input.type = 'hidden';
+                input.name = 'ingredients[]';
+                input.value = option.value;
+
+                li.appendChild(input);
+                li.appendChild(text);
+                li.setAttribute('onclick', 'location.reload();');
+
+                ul.appendChild(li);
+
+                // document.getElementById('li[count]').value = option.value;
+
+               if (count > 6){
+
+                   if (confirm("You selected too many items, maximum selection of six")) {
+                       location.reload();
+                   } else {
+                       location.reload();
+                   }
+
+               }
+
+
+
+               val += input.value + ', ';
+
+
+               document.getElementById('os1').value += input.value;
+                console.log(document.getElementById('os1').value);
+            }
+
+
+
+function handle() {
+
+if (val == ""){
+    alert ("you must select at least one type of chocolate (up to six)");
+} else {
+
+    var e = document.getElementById("pounds");
+    var strUser = e.options[e.selectedIndex].value;
+    document.getElementById("saved").style.display = "block";
+    document.getElementById("reset").style.display = "block";
+    document.getElementById("savedBut").style.display = "none";
+
+    document.getElementById("os4").value = e.options[e.selectedIndex].value;
+    var c = strUser;
+    console.log(k);
+
+
+}
+}
+
+
+function calculatePrice() {
+    if (val == "") {
+        alert("you must select at least one type of chocolate (up to six)");
+    }
+
+    else {
+        var price = 0;
+
+        var e = document.getElementById("pounds");
+        var strUser = e.options[e.selectedIndex].value;
+
+        confirm("if the destination does not match paypal, items wont be shipped");
+
+
+        var j = document.getElementById("shippingType");
+        var shippingSelection = j.options[j.selectedIndex].value;
+
+
+        var t = document.getElementById("states");
+        var state = t.options[t.selectedIndex].value;
+
+
+        if (t.options[t.selectedIndex].value == 1 && shippingSelection == 1 ){
+            price = 2;
+            // document.getElementById("price").innerHTML = "Price " + price;
+        }
+
+        if (state == 1 && shippingSelection == 2){
+            price = 4.00;
+
+        }
+
+        if (state == 1 && shippingSelection == 3){
+            price = 5.00;
+        }
+
+        if (state == 2 && shippingSelection == 1){
+            price = 7.00;
+        }
+        if (state == 2 && shippingSelection == 2){
+            price = 10.00;
+        }
+        if (state == 2 && shippingSelection == 3){
+            price = 13.00;
+        }
+        if (state == 3 && shippingSelection == 1){
+            price =27.00;
+        }
+        if (state == 3 && shippingSelection == 2){
+            price = 47.00;
+        }
+        if (state == 3 && shippingSelection == 3){
+            price = 57.00;
+        }
+
+        var shippingSelection1= "";
+
+        var state1= "";
+
+        var strUser1="";
+
+        if (shippingSelection == 1){
+            shippingSelection1 = "Standard";
+        }
+
+        if (shippingSelection == 2){
+            shippingSelection1 = "Business";
+        }
+
+        if (shippingSelection == 3){
+            shippingSelection1 = "Express";
+        }
+
+        if (state == 1){
+            state1 = "Florida";
+        }
+        if (state == 2){
+            state1 = "US, out of Florida";
+        }
+        if (state == 3){
+            state1 = "Oversea";
+        }
+
+        if (strUser == 10.95){
+            strUser1 = "1/2 lb box";
+        }
+        if (strUser == 21.98){
+            strUser1 = "1 lb box";
+        }
+        if (strUser == 35.98){
+            strUser1 = "2 lb box";
+        }
+        if (strUser == 50.98){
+            strUser1 = "5 lb box";
+        }
+
+        var ttl = Math.floor(price * strUser);
+        document.getElementById("price").innerHTML = "Price: $ " + ttl;
+        document.getElementById("savedBut").style.display = "block";
+        document.getElementById("os0").value = "Shipping Selections: " + shippingSelection1 + " state: " + state1 + " size: " + strUser1;
+        document.getElementById("os3").value = ttl;
+
+
+
+
+
+    }
+}
+
+        </script>
+
+
+</body>
+</html>
